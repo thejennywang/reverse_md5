@@ -8,7 +8,6 @@ def reverse_md5
   chunks = hash.scan(/.{32}/)
   valid_chars = 'abcdefghijklmnopqrstuvwxyz_.@+'
 
-  # puts Digest::MD5.hexdigest(Digest::MD5.hexdigest(e) + 'xy' + Digest::MD5.hexdigest('xy'))
 
   # chunks.each do |chunk|
     current_chunk = chunks.first
@@ -17,7 +16,6 @@ def reverse_md5
 
     valid_chars.each_char do |char1|
       char1 = char1
-      puts "char1 is " + char1
 
       valid_chars.each_char do |char2|
         char2 = char2
@@ -27,6 +25,10 @@ def reverse_md5
         hash_result = Digest::MD5.hexdigest(Digest::MD5.hexdigest(e) + char1 + char2 + Digest::MD5.hexdigest(char1 + char2))
         puts "current_chunk is " + current_chunk
         puts "hash_result is " + hash_result
+        puts current_chunk == hash_result
+
+        break if current_chunk == hash_result
+
 
       end
 
