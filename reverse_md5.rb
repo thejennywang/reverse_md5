@@ -6,7 +6,7 @@ def reverse_md5
   s = ''
   
   chunks = hash.scan(/.{32}/)
-  valid_chars = 'abcdefghijklmnopqrstuvwxyz_.@+'
+  valid_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.@+'
 
 
   chunks.each do |chunk|
@@ -31,7 +31,6 @@ def reverse_md5
         if current_chunk == hash_result then
           s << char1
           s << char2
-          break
         end
 
       end
@@ -40,6 +39,6 @@ def reverse_md5
 
   end
 
-    puts "the secret email is " + s
+  puts "the secret email is " + s
   
 end
