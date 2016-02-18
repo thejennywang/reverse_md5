@@ -9,7 +9,7 @@ def reverse_md5
   valid_chars = 'abcdefghijklmnopqrstuvwxyz_.@+'
 
 
-  # chunks.each do |chunk|
+  chunks.each do |chunk|
     current_chunk = chunk
     hash_result = ''
     puts "current chunk: " + current_chunk
@@ -23,9 +23,10 @@ def reverse_md5
         puts "char1 is " + char1
         puts "char2 is " + char2
 
-        hash_result = Digest::MD5.hexdigest(Digest::MD5.hexdigest(e) + char1 + char2 + Digest::MD5.hexdigest(char1 + char2))
+        hash_result = Digest::MD5.hexdigest(Digest::MD5.hexdigest(e) + s + char1 + char2 + Digest::MD5.hexdigest(s + char1 + char2))
         puts "current_chunk is " + current_chunk
         puts "hash_result is " + hash_result
+        puts current_chunk == hash_result
       
         if current_chunk == hash_result then
           s << char1
@@ -37,7 +38,7 @@ def reverse_md5
         
     end
 
-  # end
+  end
 
     puts "the secret email is " + s
   
