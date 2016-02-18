@@ -10,9 +10,10 @@ def reverse_md5
 
 
   # chunks.each do |chunk|
-    current_chunk = chunks.first
+    current_chunk = chunk
     hash_result = ''
     puts "current chunk: " + current_chunk
+
 
     valid_chars.each_char do |char1|
       char1 = char1
@@ -25,13 +26,15 @@ def reverse_md5
         hash_result = Digest::MD5.hexdigest(Digest::MD5.hexdigest(e) + char1 + char2 + Digest::MD5.hexdigest(char1 + char2))
         puts "current_chunk is " + current_chunk
         puts "hash_result is " + hash_result
-        puts current_chunk == hash_result
-
-        break if current_chunk == hash_result
-
+      
+        if current_chunk == hash_result then
+          s << char1
+          s << char2
+          break
+        end
 
       end
-
+        
     end
 
   # end
